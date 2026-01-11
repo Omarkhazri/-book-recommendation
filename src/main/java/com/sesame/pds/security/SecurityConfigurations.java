@@ -33,13 +33,20 @@ public class SecurityConfigurations {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf().disable().httpBasic().disable().cors()
-                .and().authorizeHttpRequests()
-                .antMatchers("/api/user/register").permitAll()
-                .antMatchers("/api/auth/log-in").permitAll()
-                .antMatchers("/book-service/api/**").authenticated()
-                .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .csrf().disable()
+                .httpBasic().disable()
+                .cors().and()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/user/register").permitAll()
+                        .requestMatchers("/api/auth/log-in").permitAll()
+                        .requestMatchers("/book-service/api/**").authenticated()
+                        .anyRequest().authenticated()
+                )
+                .exceptionHandling()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
@@ -58,14 +65,12 @@ public class SecurityConfigurations {
     protected CorsConfigurationSource CorsConfigurationSource() {
         return request -> {
             CorsConfiguration corsConfig = new CorsConfiguration();
-
-            corsConfig.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
+            corsConfig.setAllowedOrigins(java.util.Arrays.asList("http://localhost:5173", "http://localhost:3000"));
             corsConfig.setExposedHeaders(Collections.singletonList("Authorization"));
             corsConfig.setAllowedHeaders(Collections.singletonList("*"));
             corsConfig.setAllowedMethods(Collections.singletonList("*"));
             corsConfig.setAllowCredentials(true);
             corsConfig.setMaxAge(3600L);
-
             return corsConfig;
         };
     }

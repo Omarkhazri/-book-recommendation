@@ -4,10 +4,9 @@ import com.sesame.pds.entity.base.BaseEntity;
 import com.sesame.pds.enums.UserReadingLevel;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
-
-import static javax.persistence.CascadeType.*;
+import static jakarta.persistence.CascadeType.*;
 
 /**
  * @author KHAZRI OMAR
@@ -35,6 +34,6 @@ public class UserReadingInfo extends BaseEntity {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {MERGE, PERSIST, DETACH, REFRESH})
+    @OneToMany(mappedBy = "userReadingInfo", fetch = FetchType.EAGER, cascade = {MERGE, PERSIST, DETACH, REFRESH})
     private List<UserBookCategory> userBookCategories;
 }

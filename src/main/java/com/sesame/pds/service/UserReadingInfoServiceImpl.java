@@ -7,8 +7,8 @@ import com.sesame.pds.transformer.UserReadingInfoTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityExistsException;
-import javax.transaction.Transactional;
+import jakarta.persistence.EntityExistsException;
+import jakarta.transaction.Transactional;
 import java.util.Optional;
 
 /**

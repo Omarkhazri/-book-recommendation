@@ -8,7 +8,7 @@ import com.sesame.pds.entity.base.BaseEntity;
 import com.sesame.pds.transformer.base.BaseTransformer;
 import org.springframework.data.domain.Page;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * @author KHAZRI OMAR
@@ -23,6 +23,10 @@ public class UserBookCategory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_reading_info_id")
+    private UserReadingInfo userReadingInfo;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

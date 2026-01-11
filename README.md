@@ -1,5 +1,7 @@
 # 📚 Book Recommendation System
 
+> **⚠️ Note**: This project has been migrated to **Spring Boot 3.5.0** with Java 17. See [SPRING_BOOT_3_5_MIGRATION.md](./SPRING_BOOT_3_5_MIGRATION.md) for detailed migration information.
+
 A full-stack web application that provides intelligent book recommendations using **user-based collaborative filtering**. The system allows users to discover books based on reading preferences and ratings from similar users, creating a personalized reading experience.
 
 ## 🎯 System Overview
@@ -20,14 +22,14 @@ The Book Recommendation System is built with a **Clean Architecture** approach, 
 
 ### Backend
 - **Java 17**: Programming language
-- **Spring Boot 2.7.5**: Application framework
+- **Spring Boot 3.5.0**: Application framework (upgraded from 2.7.5)
 - **Spring Security**: JWT-based authentication and authorization
-- **Hibernate 5.6.12**: ORM framework
-- **MySQL 8.0**: Relational database
-- **Liquibase 3.6.3**: Database migration and versioning
-- **MapStruct 1.5.3**: Entity-to-DTO mapping
+- **Hibernate 6.x**: ORM framework
+- **MySQL 8.0**: Relational database with mysql-connector-j
+- **Liquibase**: Database migration and versioning
+- **MapStruct 1.5.5**: Entity-to-DTO mapping
 - **Lombok**: Reduce boilerplate code
-- **SpringDoc OpenAPI 1.6.12**: Swagger/OpenAPI 3.0 documentation
+- **SpringDoc OpenAPI 2.4.0**: Swagger/OpenAPI 3.0 documentation
 - **Maven 3**: Dependency management and build tool
 - **JWT (java-jwt 4.2.1)**: Token-based authentication
 
@@ -159,7 +161,7 @@ The Book Recommendation System is built with a **Clean Architecture** approach, 
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
-- Java 17 or higher
+- Java 17 (LTS)
 - MySQL 8.0 or higher
 - Node.js 16+ and npm
 - Maven 3.6+
@@ -449,7 +451,7 @@ This project is part of an educational initiative.
 
 ## 👨‍💻 Contributors
 
-- **Henry Azer** - Original Author & Architect
+- **KHAZRI OMAR** - Original Author & Architect
 - **Project Team** - Development & Testing
 
 ---
@@ -463,5 +465,53 @@ For issues, bug reports, or feature requests, please refer to the **Known Issues
 **Last Updated**: January 11, 2025  
 **Version**: 0.0.1-SNAPSHOT  
 **Java Version**: 17  
-**Spring Boot Version**: 2.7.5  
+**Spring Boot Version**: 3.5.0  
 **Database**: MySQL 8.0
+
+## 📋 Spring Boot 3.5 Upgrade Notes
+
+### Breaking Changes & Migrations Completed
+
+1. **Jakarta EE Namespace Migration**
+   - All `javax.*` imports converted to `jakarta.*`
+   - Affected packages: servlet, persistence, validation, transaction
+   - This is a mandatory change for Spring Boot 3.x
+
+2. **Dependency Updates**
+   - Upgraded from Spring Boot 2.7.5 to 3.5.0
+   - Updated MySql connector from `mysql-connector-java` to `mysql-connector-j`
+   - Updated springdoc-openapi from `1.6.12` to `2.4.0`
+   - Updated MapStruct from `1.5.3` to `1.5.5`
+   - Removed deprecated dependencies
+
+3. **Database Driver Changes**
+   - MySQL connector: `mysql-connector-java` → `mysql-connector-j`
+   - Ensure MySQL JDBC URL is compatible: `jdbc:mysql://localhost:3306/book_reco?useSSL=false&serverTimezone=UTC`
+
+4. **Configuration Changes**
+   - Some Spring Boot properties may have changed names
+   - Review `application.properties` for deprecated properties
+   - Use `application-dev.properties` for development environment
+
+5. **Swagger/OpenAPI Configuration**
+   - Springdoc-openapi URL might have changed
+   - Access Swagger UI at: `http://localhost:8010/book-service/swagger-ui.html`
+   - OpenAPI JSON at: `http://localhost:8010/book-service/v3/api-docs`
+
+### Build & Compilation
+
+The project has been successfully built with:
+- Maven 3.11.0 compiler plugin
+- Java source/target: 17
+- Build command: `mvn clean package`
+- JAR file: `target/book-recommendation-system-0.0.1-SNAPSHOT.jar`
+
+### Testing & Validation
+
+Before deploying to production:
+1. Run comprehensive integration tests
+2. Verify all JWT authentication flows
+3. Test database migrations with Liquibase
+4. Validate API endpoints against Swagger documentation
+5. Test with MySQL 8.0 compatibility
+
