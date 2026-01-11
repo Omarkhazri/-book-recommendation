@@ -18,7 +18,7 @@ import com.sesame.pds.transformer.*;
 import com.sesame.pds.transformer.mapper.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -49,11 +49,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookServiceImpl = new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         BookCategoryDao bookCategoryDao = mock(BookCategoryDao.class);
         BookCategoryServiceImpl bookCategoryService = new BookCategoryServiceImpl(bookCategoryDao,
@@ -66,8 +65,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer1 = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao1 = new BookDaoImpl(mock(BookRepository.class));
@@ -145,11 +143,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookService = new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         BookCategoryDao bookCategoryDao = mock(BookCategoryDao.class);
         BookCategoryServiceImpl bookCategoryService = new BookCategoryServiceImpl(bookCategoryDao,
@@ -162,8 +159,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer1 = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao1 = new BookDaoImpl(mock(BookRepository.class));
@@ -222,11 +218,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         BookCategoryDao bookCategoryDao = mock(BookCategoryDao.class);
         new BookCategoryServiceImpl(bookCategoryDao,
@@ -239,8 +234,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
         new BookTransformer(new BookMapperImpl());
         new BookDaoImpl(mock(BookRepository.class));
         new AuthorServiceImpl(null, null);
@@ -262,11 +256,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookService = new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         BookCategoryDao bookCategoryDao = mock(BookCategoryDao.class);
         BookCategoryServiceImpl bookCategoryService = new BookCategoryServiceImpl(bookCategoryDao,
@@ -279,8 +272,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer1 = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao1 = new BookDaoImpl(mock(BookRepository.class));
@@ -315,11 +307,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookService = new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         UserBookRateTransformer userBookRateTransformer = new UserBookRateTransformer(new UserBookRateMapperImpl());
         UserBookRateDaoImpl userBookRateDao = new UserBookRateDaoImpl(mock(UserBookRatingRepository.class));
@@ -328,8 +319,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer1 = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao1 = new BookDaoImpl(mock(BookRepository.class));
@@ -358,11 +348,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookService = new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         BookCategoryDao bookCategoryDao = mock(BookCategoryDao.class);
         BookCategoryServiceImpl bookCategoryService = new BookCategoryServiceImpl(bookCategoryDao,
@@ -375,8 +364,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer1 = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao1 = new BookDaoImpl(mock(BookRepository.class));
@@ -400,11 +388,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookService = new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         BookCategoryDao bookCategoryDao = mock(BookCategoryDao.class);
         BookCategoryServiceImpl bookCategoryService = new BookCategoryServiceImpl(bookCategoryDao,
@@ -417,8 +404,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer1 = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao1 = new BookDaoImpl(mock(BookRepository.class));
@@ -442,11 +428,10 @@ class BookControllerTest {
         UserReadingInfoDaoImpl userReadingInfoDao = new UserReadingInfoDaoImpl(mock(UserReadingInfoRepository.class));
         UserReadingInfoTransformer userReadingInfoTransformer = new UserReadingInfoTransformer(
                 new UserReadingInfoMapperImpl());
-        UserServiceImpl userService = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookService = new BookServiceImpl(bookTransformer, bookDao, authorService,
-                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
-                        new UserBookCategoryServiceImpl(null, null, null, null)));
+                new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService, new UserBookCategoryServiceImpl(null, null, null, null)));
 
         BookCategoryDao bookCategoryDao = mock(BookCategoryDao.class);
         BookCategoryServiceImpl bookCategoryService = new BookCategoryServiceImpl(bookCategoryDao,
@@ -459,8 +444,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer1 = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao1 = new BookDaoImpl(mock(BookRepository.class));
@@ -497,13 +481,12 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         UserBookCategoryDaoImpl userBookCategoryDao = new UserBookCategoryDaoImpl(mock(UserBookCategoryRepository.class));
         UserBookCategoryTransformer userBookCategoryTransformer = new UserBookCategoryTransformer(
                 new UserBookCategoryMapperImpl());
-        UserServiceImpl userService1 = new UserServiceImpl(null, null, null, new Argon2PasswordEncoder());
+        UserServiceImpl userService1 = new UserServiceImpl(null, null, null, new BCryptPasswordEncoder(), null);
 
         BookServiceImpl bookService = new BookServiceImpl(bookTransformer, bookDao, authorService,
                 new UserReadingInfoServiceImpl(userReadingInfoDao, userReadingInfoTransformer, userService,
@@ -589,8 +572,7 @@ class BookControllerTest {
         JWTAuthenticationManagerImpl jwtAuthenticationManager = new JWTAuthenticationManagerImpl(
                 new JWTAuthenticationUtil(), null, null);
 
-        UserServiceImpl userService = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager,
-                new Argon2PasswordEncoder());
+        UserServiceImpl userService = new UserServiceImpl(userTransformer, userDao, jwtAuthenticationManager, new BCryptPasswordEncoder(), null);
 
         BookTransformer bookTransformer = new BookTransformer(new BookMapperImpl());
         BookDaoImpl bookDao = new BookDaoImpl(mock(BookRepository.class));
@@ -607,4 +589,9 @@ class BookControllerTest {
         log.info("BookControllerTest: ended() called");
     }
 }
+
+
+
+
+
 
