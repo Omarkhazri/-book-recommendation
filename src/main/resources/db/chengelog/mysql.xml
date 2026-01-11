@@ -1,0 +1,24 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="db/chengelog/mysql/20221104_user-table.sql"/>
+    <include file="db/chengelog/mysql/20221105_refresh-token-table.sql"/>
+    <include file="db/chengelog/mysql/20221105_author-table.sql"/>
+    <include file="db/chengelog/mysql/20221110_book-category-table.sql"/>
+    <include file="db/chengelog/mysql/20221105_book-table.sql"/>
+    <include file="db/chengelog/mysql/20221108_user-book-rate-table.sql"/>
+    <include file="db/chengelog/mysql/20221110_user-book-category-table.sql"/>
+    <include file="db/chengelog/mysql/20221110_user-info-table.sql"/>
+
+    <!-- Dummy data insertion -->
+    <include file="db/chengelog/mysql/20221112_book-category-dummy-data.sql"/>
+    <include file="db/chengelog/mysql/20221113_author-dummy-data.sql"/>
+    <include file="db/chengelog/mysql/20221114_book-dummy-data.sql"/>
+    <include file="db/chengelog/mysql/20221115_user-dummy-data.sql"/>
+    <include file="db/chengelog/mysql/20221116_user-book-rate-dummy-data.sql"/>
+    <include file="db/chengelog/mysql/20221117_user-book-category-dummy-data.sql"/>
+    <include file="db/chengelog/mysql/20221118_user-reading-info-dummy-data.sql"/>
+
+</databaseChangeLog>

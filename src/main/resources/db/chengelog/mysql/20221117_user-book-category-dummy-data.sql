@@ -1,0 +1,35 @@
+-- liquibase formatted sql
+
+-- changeset henry:20221117_insert_user_book_category_dummy_data
+
+INSERT INTO user_book_category (user_id, book_category_id, created_date, modified_date, created_by, modified_by) VALUES
+(1, 4, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (1, 1, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (1, 2, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (2, 4, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (2, 8, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (2, 3, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (3, 1, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (3, 5, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (3, 2, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (4, 4, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (4, 3, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (4, 8, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (5, 1, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (5, 5, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (5, 6, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (6, 8, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (6, 3, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (6, 9, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (7, 7, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (7, 6, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (7, 9, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (8, 4, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (8, 3, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (8, 1, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (9, 1, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (9, 2, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (9, 5, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (10, 8, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (10, 9, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+                                                                                                                     (10, 3, NOW(), NOW(), 'SYSTEM', 'SYSTEM');

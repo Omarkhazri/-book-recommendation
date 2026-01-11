@@ -1,0 +1,21 @@
+-- liquibase formatted sql
+
+-- changeset henry:20221114_insert_book_dummy_data
+
+INSERT INTO book (name, author_id, category_id, rate, users_rate_count, price, pages_number, description, image_url, publish_date, reading_duration, created_date, modified_date, created_by, modified_by) VALUES
+('Harry Potter and the Philosopher\'s Stone', 1, 4, 4.9, 500000, 15.99, 309, 'The first novel in the Harry Potter series follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday.', 'https://books.google.com/books/content?id=s5pG5PiDi3QC&printsec=frontcover&img=1&zoom=1', '1997-06-26', 8, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Harry Potter and the Chamber of Secrets', 1, 4, 4.8, 450000, 15.99, 341, 'Harry and his friends investigate mysterious happenings at Hogwarts School of Witchcraft and Wizardry.', 'https://books.google.com/books/content?id=J9LbbS2HX9sC&printsec=frontcover&img=1&zoom=1', '1998-07-02', 9, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('A Game of Thrones', 2, 4, 4.7, 380000, 18.99, 694, 'The first novel of A Song of Ice and Fire series, featuring multiple POV characters in a medieval fantasy world.', 'https://books.google.com/books/content?id=a0JqzLqYZGQC&printsec=frontcover&img=1&zoom=1', '1996-08-06', 15, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Murder on the Orient Express', 3, 2, 4.6, 250000, 12.99, 256, 'Hercule Poirot investigates a murder on a luxury train bound for Istanbul.', 'https://books.google.com/books/content?id=oPbxh8FhkyAC&printsec=frontcover&img=1&zoom=1', '1934-01-01', 5, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Foundation', 4, 1, 4.8, 300000, 16.99, 255, 'A science fiction classic about the fall and rise of galactic civilization.', 'https://books.google.com/books/content?id=pJZb3u5V55EC&printsec=frontcover&img=1&zoom=1', '1951-06-01', 8, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('The Shining', 5, 5, 4.7, 280000, 14.99, 447, 'A psychological horror novel about a family isolated in a haunted hotel during winter.', 'https://books.google.com/books/content?id=2uNz6Rr6xg0C&printsec=frontcover&img=1&zoom=1', '1977-01-28', 12, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('The Alchemist', 6, 8, 4.9, 600000, 13.99, 224, 'A philosophical novel about personal legend and self-discovery.', 'https://books.google.com/books/content?id=1_h-1vU1m3kC&printsec=frontcover&img=1&zoom=1', '1988-01-01', 5, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Half of a Yellow Sun', 7, 3, 4.6, 220000, 17.99, 433, 'A novel about the Nigerian-Biafran War told through multiple perspectives.', 'https://books.google.com/books/content?id=-Bkrc1Fbm-EC&printsec=frontcover&img=1&zoom=1', '2006-09-28', 10, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Outliers', 8, 9, 4.5, 350000, 16.99, 309, 'Non-fiction exploration of what makes people successful.', 'https://books.google.com/books/content?id=3NSImqqnxnkC&printsec=frontcover&img=1&zoom=1', '2008-11-18', 7, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Crescent City', 9, 4, 4.8, 400000, 19.99, 672, 'A paranormal romance fantasy novel set in a magical city.', 'https://books.google.com/books/content?id=HzIdxAEACAAJ&printsec=frontcover&img=1&zoom=1', '2020-01-30', 14, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('The Da Vinci Code', 10, 5, 4.4, 500000, 15.99, 487, 'A mystery thriller about art, history, and codes.', 'https://via.placeholder.com/300?text=DaVinci+Code', '2003-03-18', 10, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('I, Robot', 4, 1, 4.5, 200000, 12.99, 224, 'A collection of science fiction short stories about robots and AI.', 'https://via.placeholder.com/300?text=I+Robot', '1950-12-02', 6, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Death on the Nile', 3, 2, 4.7, 180000, 12.99, 311, 'Hercule Poirot solves a murder on a cruise ship on the Nile River.', 'https://via.placeholder.com/300?text=Death+Nile', '1937-11-01', 7, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('A Throne of Glass', 9, 4, 4.6, 350000, 17.99, 416, 'A fantasy novel following an assassin in a magical kingdom.', 'https://via.placeholder.com/300?text=Throne+Glass', '2012-08-07', 9, NOW(), NOW(), 'SYSTEM', 'SYSTEM'),
+('Thinking, Fast and Slow', 8, 8, 4.7, 280000, 18.99, 499, 'A groundbreaking book about human psychology and decision-making.', 'https://books.google.com/books/content?id=AV9x8XakdV0C&printsec=frontcover&img=1&zoom=1', '2011-10-25', 10, NOW(), NOW(), 'SYSTEM', 'SYSTEM');
+
