@@ -449,7 +449,7 @@ This project is part of an educational initiative.
 
 ## 👨‍💻 Contributors
 
-- **Henry Azer** - Original Author & Architect
+- **KHAZRI OMAR** - Original Author & Architect
 - **Project Team** - Development & Testing
 
 ---
