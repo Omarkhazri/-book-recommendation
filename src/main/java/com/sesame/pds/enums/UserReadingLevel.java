@@ -7,7 +7,8 @@ package com.sesame.pds.enums;
 public enum UserReadingLevel {
     BEGINNER("BEGINNER"),
     INTERMEDIATE("INTERMEDIATE"),
-    EXPERT("EXPERT");
+    EXPERT("EXPERT"),
+    ADVANCED("ADVANCED");
 
     private final String level;
 
