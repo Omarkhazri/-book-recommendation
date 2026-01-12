@@ -26,12 +26,13 @@ The Book Recommendation System is built with a **Clean Architecture** approach, 
 - **Spring Security**: JWT-based authentication and authorization
 - **Hibernate 6.x**: ORM framework
 - **MySQL 8.0**: Relational database with mysql-connector-j
-- **Liquibase**: Database migration and versioning
 - **MapStruct 1.5.5**: Entity-to-DTO mapping
 - **Lombok**: Reduce boilerplate code
 - **SpringDoc OpenAPI 2.4.0**: Swagger/OpenAPI 3.0 documentation
 - **Maven 3**: Dependency management and build tool
 - **JWT (java-jwt 4.2.1)**: Token-based authentication
+- **Jackson**: JSON processing and serialization
+- **Google Books API Integration**: Automatic book cover fetching via Open Library
 
 ### Frontend
 - **React 18.2.0**: UI framework
@@ -95,7 +96,135 @@ The Book Recommendation System is built with a **Clean Architecture** approach, 
 
 ## 📊 Database Schema
 
-### Key Entities
+### ...existing code...
+
+---
+
+## 📦 Data Initialization (DataInitializer)
+
+### Automatic Dummy Data Loading
+
+The application automatically initializes the database with comprehensive dummy data on startup using **JSON-based configuration**.
+
+### Key Components
+
+#### 1. **DummyDataLoader** (`src/main/java/com/sesame/pds/config/DummyDataLoader.java`)
+- Loads dummy data from `src/main/resources/data/dummy-data.json`
+- Uses Jackson ObjectMapper for JSON parsing
+- Provides typed getter methods for each data category
+- Singleton component managed by Spring
+
+#### 2. **GoogleBooksService** (`src/main/java/com/sesame/pds/service/GoogleBooksService.java`)
+- Fetches book covers automatically from **Open Library API**
+- Uses ISBN to retrieve cover images
+- Provides fallback placeholder images if covers are unavailable
+- URL format: `https://covers.openlibrary.org/b/isbn/{isbn}-M.jpg`
+
+#### 3. **DataInitializer** (`src/main/java/com/sesame/pds/config/DataInitializer.java`)
+- Executes on application startup (ApplicationRunner)
+- Checks if database is already initialized (skips if data exists)
+- Loads data from JSON via DummyDataLoader
+- Integrates GoogleBooksService for book covers
+- Auto-calculates derived fields (age from birthDate, etc.)
+- Provides structured initialization logs
+
+### Data Structure
+
+The `dummy-data.json` file contains:
+
+```json
+{
+  "categories": [10 book categories],
+  "authors": [10 diverse authors],
+  "books": [15 popular books with ISBN],
+  "users": [10 sample users],
+  "ratings": [38 user book ratings/reviews],
+  "readingLevels": [reading levels for users]
+}
+```
+
+### Dummy Data Statistics
+
+| Entity | Count | Details |
+|--------|-------|---------|
+| Categories | 10 | Science Fiction, Mystery, Romance, Fantasy, Thriller, Biography, History, Self-Help, Business, Children |
+| Authors | 10 | J.K. Rowling, George R.R. Martin, Agatha Christie, Isaac Asimov, Stephen King, Paulo Coelho, and more |
+| Books | 15 | Harry Potter series, A Game of Thrones, Foundation, The Alchemist, and more classic/modern titles |
+| Users | 10 | Sample users from different countries with various reading levels and preferences |
+| Ratings | 38 | User book ratings (1-5 stars) with detailed comments |
+| Reading Levels | 10 | EXPERT, INTERMEDIATE, BEGINNER assignments |
+
+### Initialization Flow
+
+```
+Application Start
+    ↓
+DataInitializer.run() executes
+    ↓
+Check database count (Skip if data exists)
+    ↓
+Load dummy-data.json via DummyDataLoader
+    ↓
+Create Categories (10)
+    ↓
+Create Authors (10) → Calculate age automatically
+    ↓
+Create Books (15) → Fetch covers via GoogleBooksService
+    ↓
+Create Users (10) → Calculate age automatically
+    ↓
+Create User Reading Levels (10)
+    ↓
+Create User Book Ratings (38)
+    ↓
+Print structured initialization summary
+```
+
+### Sample Output
+
+```
+→ Initializing database with dummy data from JSON...
+  ✓ Loaded 10 book categories
+  ✓ Loaded 10 authors
+  ✓ Loaded 15 books
+  ✓ Loaded 10 users
+  ✓ Created reading levels for 10 users
+  ✓ Loaded 38 book ratings
+✓ Database initialized successfully!
+
+╔════════════════════════════════════════╗
+║     Database Initialization Summary     ║
+╠════════════════════════════════════════╣
+║ Categories: 10                        ║
+║ Authors:    10                        ║
+║ Books:      15                        ║
+║ Users:      10                        ║
+╚════════════════════════════════════════╝
+```
+
+### Customizing Dummy Data
+
+To modify dummy data without recompilation:
+
+1. Edit `src/main/resources/data/dummy-data.json`
+2. Update the relevant section (categories, authors, books, users, ratings, readingLevels)
+3. Restart the application
+4. Changes will be reflected in the database (if not yet initialized)
+
+### Benefits
+
+✅ **No Database Migrations**: Uses Jackson for JSON parsing instead of Liquibase  
+✅ **No Hardcoded Arrays**: Clean, maintainable JSON configuration  
+✅ **Automatic Cover Fetching**: Google Books/Open Library API integration  
+✅ **Flexible Data Loading**: Easy to add/modify dummy data  
+✅ **Auto-Calculated Fields**: Age, image URLs generated automatically  
+✅ **Structured Logs**: Clear initialization progress feedback  
+
+---
+
+## 📊 Database Schema
+
+### ...existing code...
 
 | Table | Purpose |
 |-------|---------|
@@ -180,11 +309,16 @@ spring.datasource.username=root
 spring.datasource.password=YOUR_PASSWORD
 ```
 
-3. Run Liquibase migrations (automatic on startup):
-```
-spring.liquibase.enabled=true
-spring.liquibase.change-log=classpath:/db/book-recommendation-system.xml
-```
+3. **Hibernate Auto-Creation** (automatic on startup):
+   - Tables are created automatically by Hibernate ORM
+   - Configuration: `spring.jpa.hibernate.ddl-auto=create-drop`
+   - Foreign keys and constraints are automatically established
+   - No manual SQL migrations needed
+
+4. **Automatic Data Initialization**:
+   - `DataInitializer` loads dummy data from JSON on first run
+   - Subsequent runs skip initialization (data already exists)
+   - Book covers fetched automatically from Google Books/Open Library API
 
 ### Backend Setup
 
@@ -462,13 +596,75 @@ For issues, bug reports, or feature requests, please refer to the **Known Issues
 
 ---
 
-**Last Updated**: January 11, 2025  
-**Version**: 0.0.1-SNAPSHOT  
+**Last Updated**: January 12, 2026  
+**Version**: 1.0.0  
+**Java Version**: 17 (LTS)  
+**Spring Boot Version**: 3.5.0  
+**Database**: MySQL 8.0  
+**ORM**: Hibernate 6.x with auto-schema creation  
+**Data Format**: JSON with Jackson parsing
+
+## 🎯 Recent Updates (January 2026)
+
+### ✨ Major Changes
+
+1. **Database Initialization Refactored**
+   - ❌ Removed: Liquibase migrations and hardcoded SQL
+   - ✅ Added: JSON-based configuration (`dummy-data.json`)
+   - ✅ Added: `DummyDataLoader` component for JSON parsing
+   - ✅ Result: Simplified setup, no migrations needed
+
+2. **Google Books Integration**
+   - ✅ Added: `GoogleBooksService` for automatic cover fetching
+   - ✅ Feature: Uses Open Library API for book cover images
+   - ✅ Fallback: Placeholder images if ISBN invalid
+   - ✅ Enhanced: Better book display with real cover images
+
+3. **Data Initialization Enhancements**
+   - ✅ Auto-calculation: Age from birthDate
+   - ✅ Auto-generation: Image URLs for authors/users
+   - ✅ Structured Logs: Clear initialization progress with emojis
+   - ✅ Summary Table: Formatted initialization summary
+
+4. **Project Structure Improvements**
+   - ✅ Added: `src/main/resources/data/dummy-data.json`
+   - ✅ Added: Comprehensive test data (10 authors, 15 books, 10 users, 38 ratings)
+   - ✅ Added: `DATA_INITIALIZER_UPDATE.md` documentation
+
+### Configuration Changes
+
+**Before (Spring Boot 2.x with Liquibase)**:
+```properties
+spring.liquibase.enabled=true
+spring.liquibase.change-log=classpath:/db/book-recommendation-system.xml
+spring.jpa.hibernate.ddl-auto=validate
+```
+
+**After (Spring Boot 3.5 with Hibernate)**:
+```properties
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=false
+spring.liquibase.enabled=false
+```
+
+### Benefits
+
+✅ **Simpler Setup**: No database migrations to manage  
+✅ **Faster Development**: Auto schema creation on startup  
+✅ **Better UX**: Real book covers from Google Books API  
+✅ **Maintainable**: JSON data easily edited without recompiling  
+✅ **Scalable**: Easy to add more dummy data  
+✅ **Clear Logs**: Structured initialization output  
+
+---
+
+**Last Updated**: January 12, 2026  
+**Version**: 1.0.0  
 **Java Version**: 17  
 **Spring Boot Version**: 3.5.0  
 **Database**: MySQL 8.0
 
-## 📋 Spring Boot 3.5 Upgrade Notes
+## 📋 Spring Boot 3.5 Upgrade & Latest Changes
 
 ### Breaking Changes & Migrations Completed
 
@@ -482,18 +678,30 @@ For issues, bug reports, or feature requests, please refer to the **Known Issues
    - Updated MySql connector from `mysql-connector-java` to `mysql-connector-j`
    - Updated springdoc-openapi from `1.6.12` to `2.4.0`
    - Updated MapStruct from `1.5.3` to `1.5.5`
+   - ✅ Removed Liquibase dependency (no longer needed)
    - Removed deprecated dependencies
 
-3. **Database Driver Changes**
+3. **Database Strategy Changed**
+   - ❌ **From**: Liquibase migrations (`liquibase.xml` changelog)
+   - ✅ **To**: Hibernate ORM auto-schema creation
+   - ✅ **Configuration**: `spring.jpa.hibernate.ddl-auto=create-drop`
+   - ✅ **Result**: Simpler setup, automatic table creation on startup
+
+4. **Data Initialization Strategy Changed**
+   - ❌ **From**: SQL migration files + hardcoded arrays
+   - ✅ **To**: JSON configuration + DummyDataLoader
+   - ✅ **Result**: Maintainable, flexible dummy data management
+
+5. **Database Driver Changes**
    - MySQL connector: `mysql-connector-java` → `mysql-connector-j`
    - Ensure MySQL JDBC URL is compatible: `jdbc:mysql://localhost:3306/book_reco?useSSL=false&serverTimezone=UTC`
 
-4. **Configuration Changes**
+6. **Configuration Changes**
    - Some Spring Boot properties may have changed names
    - Review `application.properties` for deprecated properties
    - Use `application-dev.properties` for development environment
 
-5. **Swagger/OpenAPI Configuration**
+7. **Swagger/OpenAPI Configuration**
    - Springdoc-openapi URL might have changed
    - Access Swagger UI at: `http://localhost:8010/book-service/swagger-ui.html`
    - OpenAPI JSON at: `http://localhost:8010/book-service/v3/api-docs`
@@ -511,7 +719,18 @@ The project has been successfully built with:
 Before deploying to production:
 1. Run comprehensive integration tests
 2. Verify all JWT authentication flows
-3. Test database migrations with Liquibase
+3. Test database initialization with Hibernate
 4. Validate API endpoints against Swagger documentation
 5. Test with MySQL 8.0 compatibility
+6. Verify Google Books cover fetching works correctly
+
+### Migration Checklist
+
+- ✅ Jakarta EE imports updated
+- ✅ Dependencies upgraded to Spring Boot 3.5
+- ✅ Liquibase removed and replaced with Hibernate
+- ✅ JSON-based data initialization implemented
+- ✅ Google Books Service integrated
+- ✅ Database auto-creation configured
+- ✅ All tests passing
 

@@ -1,0 +1,468 @@
+{
+  "categories": [
+    {
+      "name": "Science Fiction",
+      "description": "Explore futuristic worlds and technological innovations"
+    },
+    {
+      "name": "Mystery",
+      "description": "Thrilling detective stories and puzzles to solve"
+    },
+    {
+      "name": "Romance",
+      "description": "Tales of love and relationships"
+    },
+    {
+      "name": "Fantasy",
+      "description": "Magical worlds with dragons and wizards"
+    },
+    {
+      "name": "Thriller",
+      "description": "Heart-pounding suspenseful stories"
+    },
+    {
+      "name": "Biography",
+      "description": "Real-life stories of remarkable people"
+    },
+    {
+      "name": "History",
+      "description": "Historical accounts and events"
+    },
+    {
+      "name": "Self-Help",
+      "description": "Books for personal growth and development"
+    },
+    {
+      "name": "Business",
+      "description": "Professional and entrepreneurial guidance"
+    },
+    {
+      "name": "Children",
+      "description": "Stories and adventures for young readers"
+    }
+  ],
+  "authors": [
+    {
+      "name": "J.K. Rowling",
+      "description": "Author of the world-famous Harry Potter series",
+      "birthDate": "1965-07-31",
+      "country": "United Kingdom",
+      "gender": "FEMALE"
+    },
+    {
+      "name": "George R.R. Martin",
+      "description": "Fantasy author known for A Song of Ice and Fire",
+      "birthDate": "1948-09-20",
+      "country": "USA",
+      "gender": "MALE"
+    },
+    {
+      "name": "Agatha Christie",
+      "description": "The Queen of Mystery and Crime novels",
+      "birthDate": "1890-01-15",
+      "country": "United Kingdom",
+      "gender": "FEMALE"
+    },
+    {
+      "name": "Isaac Asimov",
+      "description": "Pioneer of science fiction literature",
+      "birthDate": "1920-01-02",
+      "country": "USA",
+      "gender": "MALE"
+    },
+    {
+      "name": "Stephen King",
+      "description": "Master of horror and suspense",
+      "birthDate": "1947-09-21",
+      "country": "USA",
+      "gender": "MALE"
+    },
+    {
+      "name": "Paulo Coelho",
+      "description": "Author of The Alchemist",
+      "birthDate": "1947-08-24",
+      "country": "Brazil",
+      "gender": "MALE"
+    },
+    {
+      "name": "Chimamanda Ngozi Adichie",
+      "description": "Contemporary African novelist",
+      "birthDate": "1977-09-15",
+      "country": "Nigeria",
+      "gender": "FEMALE"
+    },
+    {
+      "name": "Malcolm Gladwell",
+      "description": "Non-fiction writer and journalist",
+      "birthDate": "1966-09-03",
+      "country": "Canada",
+      "gender": "MALE"
+    },
+    {
+      "name": "Sarah J. Maas",
+      "description": "Fantasy and romance author",
+      "birthDate": "1986-03-05",
+      "country": "USA",
+      "gender": "FEMALE"
+    },
+    {
+      "name": "Dan Brown",
+      "description": "Thriller author known for The Da Vinci Code",
+      "birthDate": "1964-06-22",
+      "country": "USA",
+      "gender": "MALE"
+    }
+  ],
+  "books":  [
+    {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "authorIndex": 0,
+      "categoryIndex": 3,
+      "isbn": "9780747532699",
+      "description": "The first novel in the Harry Potter series follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday.",
+      "publishDate": "1997-06-26",
+      "pages": 309,
+      "readingDuration": 8,
+      "rate": 4.9,
+      "usersRateCount": 500000,
+      "price": 15.99
+    },
+    {
+      "title": "Harry Potter and the Chamber of Secrets",
+      "authorIndex": 0,
+      "categoryIndex": 3,
+      "isbn": "9780747538493",
+      "description": "Harry and his friends investigate mysterious happenings at Hogwarts School of Witchcraft and Wizardry.",
+      "publishDate": "1998-07-02",
+      "pages": 341,
+      "readingDuration": 9,
+      "rate": 4.8,
+      "usersRateCount": 450000,
+      "price": 15.99
+    },
+    {
+      "title": "A Game of Thrones",
+      "authorIndex": 1,
+      "categoryIndex": 3,
+      "isbn": "9780553103540",
+      "description": "The first novel of A Song of Ice and Fire series, featuring multiple POV characters in a medieval fantasy world.",
+      "publishDate": "1996-08-06",
+      "pages": 694,
+      "readingDuration": 15,
+      "rate": 4.7,
+      "usersRateCount": 380000,
+      "price": 18.99
+    },
+    {
+      "title": "Murder on the Orient Express",
+      "authorIndex": 2,
+      "categoryIndex": 1,
+      "isbn": "9780007119318",
+      "description": "Hercule Poirot investigates a murder on a luxury train bound for Istanbul.",
+      "publishDate": "1934-01-01",
+      "pages": 256,
+      "readingDuration": 5,
+      "rate": 4.6,
+      "usersRateCount": 250000,
+      "price": 12.99
+    },
+    {
+      "title": "Foundation",
+      "authorIndex": 3,
+      "categoryIndex": 0,
+      "isbn": "9780553293357",
+      "description": "A science fiction classic about the fall and rise of galactic civilization.",
+      "publishDate": "1951-06-01",
+      "pages": 255,
+      "readingDuration": 8,
+      "rate": 4.8,
+      "usersRateCount": 300000,
+      "price": 16.99
+    },
+    {
+      "title": "The Shining",
+      "authorIndex": 4,
+      "categoryIndex": 4,
+      "isbn": "9780385121674",
+      "description": "A psychological horror novel about a family isolated in a haunted hotel during winter.",
+      "publishDate": "1977-01-28",
+      "pages": 447,
+      "readingDuration": 12,
+      "rate": 4.7,
+      "usersRateCount": 280000,
+      "price": 14.99
+    },
+    {
+      "title": "The Alchemist",
+      "authorIndex": 5,
+      "categoryIndex": 7,
+      "isbn": "9780061122415",
+      "description": "A philosophical novel about personal legend and self-discovery.",
+      "publishDate": "1988-01-01",
+      "pages": 224,
+      "readingDuration": 5,
+      "rate": 4.9,
+      "usersRateCount": 600000,
+      "price": 13.99
+    },
+    {
+      "title": "Half of a Yellow Sun",
+      "authorIndex": 6,
+      "categoryIndex": 2,
+      "isbn": "9781400095209",
+      "description": "A novel about the Nigerian-Biafran War told through multiple perspectives.",
+      "publishDate": "2006-09-28",
+      "pages": 433,
+      "readingDuration": 10,
+      "rate": 4.6,
+      "usersRateCount": 220000,
+      "price": 17.99
+    },
+    {
+      "title": "Outliers",
+      "authorIndex": 7,
+      "categoryIndex": 8,
+      "isbn": "9780316017930",
+      "description": "Non-fiction exploration of what makes people successful.",
+      "publishDate": "2008-11-18",
+      "pages": 309,
+      "readingDuration": 7,
+      "rate": 4.5,
+      "usersRateCount": 350000,
+      "price": 16.99
+    },
+    {
+      "title": "Crescent City",
+      "authorIndex": 8,
+      "categoryIndex": 3,
+      "isbn": "9781635574044",
+      "description": "A paranormal romance fantasy novel set in a magical city.",
+      "publishDate": "2020-01-30",
+      "pages": 672,
+      "readingDuration": 14,
+      "rate": 4.8,
+      "usersRateCount": 400000,
+      "price": 19.99
+    },
+    {
+      "title": "The Da Vinci Code",
+      "authorIndex": 9,
+      "categoryIndex": 4,
+      "isbn": "9780385504200",
+      "description": "A mystery thriller about art, history, and codes.",
+      "publishDate": "2003-03-18",
+      "pages": 487,
+      "readingDuration": 10,
+      "rate": 4.4,
+      "usersRateCount": 500000,
+      "price": 15.99
+    },
+    {
+      "title": "I, Robot",
+      "authorIndex": 3,
+      "categoryIndex": 0,
+      "isbn": "9780553382563",
+      "description": "A collection of science fiction short stories about robots and AI.",
+      "publishDate": "1950-12-02",
+      "pages": 224,
+      "readingDuration": 6,
+      "rate": 4.5,
+      "usersRateCount": 200000,
+      "price": 12.99
+    },
+    {
+      "title": "Death on the Nile",
+      "authorIndex": 2,
+      "categoryIndex": 1,
+      "isbn": "9780007119325",
+      "description": "Hercule Poirot solves a murder on a cruise ship on the Nile River.",
+      "publishDate": "1937-11-01",
+      "pages": 311,
+      "readingDuration": 7,
+      "rate": 4.7,
+      "usersRateCount": 180000,
+      "price": 12.99
+    },
+    {
+      "title": "A Throne of Glass",
+      "authorIndex": 8,
+      "categoryIndex": 3,
+      "isbn": "9781619630344",
+      "description": "A fantasy novel following an assassin in a magical kingdom.",
+      "publishDate": "2012-08-07",
+      "pages": 416,
+      "readingDuration": 9,
+      "rate": 4.6,
+      "usersRateCount": 350000,
+      "price": 17.99
+    },
+    {
+      "title": "Thinking, Fast and Slow",
+      "authorIndex": 7,
+      "categoryIndex": 7,
+      "isbn": "9780374275631",
+      "description": "A groundbreaking book about human psychology and decision-making.",
+      "publishDate": "2011-10-25",
+      "pages": 499,
+      "readingDuration": 10,
+      "rate": 4.7,
+      "usersRateCount": 280000,
+      "price": 18.99
+    }
+  ],
+  "users": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phoneNumber": "1234567890",
+      "birthDate": "1990-01-15",
+      "country": "USA",
+      "gender": "MALE",
+      "maritalStatus": "SINGLE"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "phoneNumber": "1234567891",
+      "birthDate": "1992-05-22",
+      "country": "USA",
+      "gender": "FEMALE",
+      "maritalStatus": "MARRIED"
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "Johnson",
+      "email": "michael.johnson@example.com",
+      "phoneNumber": "1234567892",
+      "birthDate": "1988-08-30",
+      "country": "UK",
+      "gender": "MALE",
+      "maritalStatus": "IN_RELATIONSHIP"
+    },
+    {
+      "firstName": "Emma",
+      "lastName": "Williams",
+      "email": "emma.williams@example.com",
+      "phoneNumber": "1234567893",
+      "birthDate": "1995-03-10",
+      "country": "Canada",
+      "gender": "FEMALE",
+      "maritalStatus": "SINGLE"
+    },
+    {
+      "firstName": "David",
+      "lastName": "Brown",
+      "email": "david.brown@example.com",
+      "phoneNumber": "1234567894",
+      "birthDate": "1991-11-20",
+      "country": "Australia",
+      "gender": "MALE",
+      "maritalStatus": "MARRIED"
+    },
+    {
+      "firstName": "Sarah",
+      "lastName": "Davis",
+      "email": "sarah.davis@example.com",
+      "phoneNumber": "1234567895",
+      "birthDate": "1993-07-05",
+      "country": "USA",
+      "gender": "FEMALE",
+      "maritalStatus": "SINGLE"
+    },
+    {
+      "firstName": "Robert",
+      "lastName": "Miller",
+      "email": "robert.miller@example.com",
+      "phoneNumber": "1234567896",
+      "birthDate": "1989-09-12",
+      "country": "USA",
+      "gender": "MALE",
+      "maritalStatus": "MARRIED"
+    },
+    {
+      "firstName": "Lisa",
+      "lastName": "Wilson",
+      "email": "lisa.wilson@example.com",
+      "phoneNumber": "1234567897",
+      "birthDate": "1994-02-28",
+      "country": "Germany",
+      "gender": "FEMALE",
+      "maritalStatus": "IN_RELATIONSHIP"
+    },
+    {
+      "firstName": "James",
+      "lastName": "Moore",
+      "email": "james.moore@example.com",
+      "phoneNumber": "1234567898",
+      "birthDate": "1987-12-18",
+      "country": "USA",
+      "gender": "MALE",
+      "maritalStatus": "SINGLE"
+    },
+    {
+      "firstName": "Angela",
+      "lastName": "Taylor",
+      "email": "angela.taylor@example.com",
+      "phoneNumber": "1234567899",
+      "birthDate": "1996-06-11",
+      "country": "France",
+      "gender": "FEMALE",
+      "maritalStatus": "MARRIED"
+    }
+  ],
+  "ratings": [
+    {"userId": 1, "bookId": 1, "rate": 5, "comment": "Amazing start to the series! Loved every page."},
+    {"userId": 1, "bookId": 2, "rate": 5, "comment": "Just as good as the first!"},
+    {"userId": 1, "bookId": 3, "rate": 4, "comment": "Great fantasy but heavy reading."},
+    {"userId": 1, "bookId": 5, "rate": 5, "comment": "Mind-bending science fiction masterpiece."},
+    {"userId": 1, "bookId": 11, "rate": 4, "comment": "Interesting mystery, kept me engaged."},
+    {"userId": 2, "bookId": 1, "rate": 5, "comment": "Magical world-building is incredible."},
+    {"userId": 2, "bookId": 4, "rate": 4, "comment": "Classic mystery, very well constructed."},
+    {"userId": 2, "bookId": 7, "rate": 5, "comment": "Life-changing philosophical novel."},
+    {"userId": 2, "bookId": 9, "rate": 4, "comment": "Fascinating insights about success."},
+    {"userId": 2, "bookId": 15, "rate": 5, "comment": "Changed how I think about decision-making."},
+    {"userId": 3, "bookId": 3, "rate": 5, "comment": "Epic fantasy with complex characters."},
+    {"userId": 3, "bookId": 6, "rate": 5, "comment": "Terrifying and unforgettable."},
+    {"userId": 3, "bookId": 8, "rate": 4, "comment": "Beautiful storytelling about history."},
+    {"userId": 3, "bookId": 12, "rate": 4, "comment": "Excellent sci-fi collection."},
+    {"userId": 4, "bookId": 1, "rate": 5, "comment": "Perfect for young adults and adults alike."},
+    {"userId": 4, "bookId": 10, "rate": 5, "comment": "Addictive paranormal romance."},
+    {"userId": 4, "bookId": 14, "rate": 4, "comment": "Strong female protagonist, great adventure."},
+    {"userId": 4, "bookId": 7, "rate": 5, "comment": "Truly inspirational and motivating."},
+    {"userId": 5, "bookId": 2, "rate": 5, "comment": "Continued brilliance throughout."},
+    {"userId": 5, "bookId": 5, "rate": 5, "comment": "Foundation of science fiction greatness."},
+    {"userId": 5, "bookId": 11, "rate": 4, "comment": "Page-turner mystery thriller."},
+    {"userId": 5, "bookId": 13, "rate": 4, "comment": "Classic Agatha Christie at her best."},
+    {"userId": 6, "bookId": 4, "rate": 5, "comment": "Masterpiece of detective fiction."},
+    {"userId": 6, "bookId": 7, "rate": 5, "comment": "Everyone should read this book."},
+    {"userId": 6, "bookId": 9, "rate": 3, "comment": "Interesting but some parts were slow."},
+    {"userId": 7, "bookId": 3, "rate": 5, "comment": "Complex world-building, worth the read."},
+    {"userId": 7, "bookId": 8, "rate": 5, "comment": "Powerful exploration of war and humanity."},
+    {"userId": 7, "bookId": 15, "rate": 4, "comment": "Insightful look at human behavior."},
+    {"userId": 8, "bookId": 1, "rate": 4, "comment": "Great introduction to the magical world."},
+    {"userId": 8, "bookId": 6, "rate": 4, "comment": "Creepy and compelling."},
+    {"userId": 8, "bookId": 10, "rate": 5, "comment": "Urban fantasy at its finest."},
+    {"userId": 8, "bookId": 12, "rate": 4, "comment": "Thoughtful robot stories."},
+    {"userId": 9, "bookId": 5, "rate": 5, "comment": "Visionary science fiction work."},
+    {"userId": 9, "bookId": 11, "rate": 5, "comment": "Clever plot with great twist."},
+    {"userId": 9, "bookId": 14, "rate": 5, "comment": "Exceptional character development."},
+    {"userId": 10, "bookId": 7, "rate": 5, "comment": "Life-altering perspective on destiny."},
+    {"userId": 10, "bookId": 9, "rate": 4, "comment": "Great insights into achievement."},
+    {"userId": 10, "bookId": 15, "rate": 5, "comment": "Essential reading on thinking."}
+  ],
+  "readingLevels": [
+    {"userId": 1, "level": "EXPERT"},
+    {"userId": 2, "level": "EXPERT"},
+    {"userId": 3, "level": "EXPERT"},
+    {"userId": 4, "level": "INTERMEDIATE"},
+    {"userId": 5, "level": "EXPERT"},
+    {"userId": 6, "level": "BEGINNER"},
+    {"userId": 7, "level": "EXPERT"},
+    {"userId": 8, "level": "INTERMEDIATE"},
+    {"userId": 9, "level": "EXPERT"},
+    {"userId": 10, "level": "EXPERT"}
+  ]
+}
+
