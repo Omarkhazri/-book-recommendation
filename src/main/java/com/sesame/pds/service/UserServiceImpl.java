@@ -2,9 +2,11 @@ package com.sesame.pds.service;
 
 import com.sesame.pds.dao.UserDao;
 import com.sesame.pds.dto.UserDto;
+import com.sesame.pds.dto.UserReadingInfoDto;
 import com.sesame.pds.entity.User;
 import com.sesame.pds.enums.UserGender;
 import com.sesame.pds.enums.UserMartialStatus;
+import com.sesame.pds.enums.UserReadingLevel;
 import com.sesame.pds.manager.JWTAuthenticationManager;
 import com.sesame.pds.transformer.UserTransformer;
 import lombok.extern.slf4j.Slf4j;
@@ -29,12 +31,14 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
     private final JWTAuthenticationManager jwtAuthenticationManager;
     private final PasswordEncoder passwordEncoder;
+    private final UserReadingInfoService userReadingInfoService;
 
-    public UserServiceImpl(UserTransformer userTransformer, UserDao userDao, JWTAuthenticationManager jwtAuthenticationManager, @Lazy PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserTransformer userTransformer, UserDao userDao, JWTAuthenticationManager jwtAuthenticationManager, @Lazy PasswordEncoder passwordEncoder, @Lazy UserReadingInfoService userReadingInfoService) {
         this.userTransformer = userTransformer;
         this.userDao = userDao;
         this.jwtAuthenticationManager = jwtAuthenticationManager;
         this.passwordEncoder = passwordEncoder;
+        this.userReadingInfoService = userReadingInfoService;
     }
 
     @Override
@@ -56,7 +60,21 @@ public class UserServiceImpl implements UserService {
 
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         User transformedDtoToEntity = getTransformer().transformDtoToEntity(dto);
-        return getTransformer().transformEntityToDto(getDao().create(transformedDtoToEntity));
+        UserDto createdUserDto = getTransformer().transformEntityToDto(getDao().create(transformedDtoToEntity));
+
+        // Create default UserReadingInfo for the new user
+        try {
+            UserReadingInfoDto userReadingInfoDto = new UserReadingInfoDto();
+            userReadingInfoDto.setReadingLevel(UserReadingLevel.BEGINNER);
+            userReadingInfoDto.setUser(createdUserDto);
+            userReadingInfoDto.setUserBookCategories(new ArrayList<>());
+            userReadingInfoService.create(userReadingInfoDto);
+            log.info("UserReadingInfo created successfully for user: {}", createdUserDto.getEmail());
+        } catch (Exception e) {
+            log.warn("Failed to create UserReadingInfo for user: {}", createdUserDto.getEmail(), e);
+        }
+
+        return createdUserDto;
     }
 
     @Override

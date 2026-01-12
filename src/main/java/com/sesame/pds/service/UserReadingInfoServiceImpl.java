@@ -52,10 +52,21 @@ public class UserReadingInfoServiceImpl implements UserReadingInfoService {
     }
 
     @Override
+    @Transactional
     public UserReadingInfoDto findUserReadingInfo() {
         log.info("UserReadingInfoService: findUserReadingInfo() called");
         Optional<UserReadingInfo> userReadingInfo = getDao().findByUserId(userService.getCurrentUser().getId());
-        if (userReadingInfo.isEmpty()) throw new EntityExistsException("User hasn't reading info");
+
+        if (userReadingInfo.isEmpty()) {
+            // Auto-create UserReadingInfo if it doesn't exist
+            log.warn("UserReadingInfo not found for user: {}. Creating default entry.", userService.getCurrentUser().getEmail());
+            UserReadingInfoDto newUserReadingInfoDto = new UserReadingInfoDto();
+            newUserReadingInfoDto.setReadingLevel(com.sesame.pds.enums.UserReadingLevel.BEGINNER);
+            newUserReadingInfoDto.setUser(userService.getCurrentUser());
+            newUserReadingInfoDto.setUserBookCategories(new java.util.ArrayList<>());
+            return create(newUserReadingInfoDto);
+        }
+
         UserReadingInfoDto userReadingInfoDto = getTransformer().transformEntityToDto(userReadingInfo.get());
         userReadingInfoDto.setUserBookCategories(userBookCategoryService.findAllUserBookCategories());
         return userReadingInfoDto;
